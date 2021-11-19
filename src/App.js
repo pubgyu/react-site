@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <GlobalStyles />
       <div className="contents">
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
           <Header />
 
           <Routes>
