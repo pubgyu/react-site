@@ -43,7 +43,7 @@ function Header() {
                     <NavLink to="/" activeclassname="is-active">movie</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/old-react" activeclassname="is-active">old react</NavLink>
+                    <NavLink to="/redux" activeclassname="is-active">redux</NavLink>
                 </li>
             </ul>
         </HeaderStyle>

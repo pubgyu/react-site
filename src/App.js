@@ -3,7 +3,7 @@ import GlobalStyles from "./components/GlobalStyles";
 import Header from "./components/Header";
 import Movie from "./routes/Movie";
 import MovieDetail from "./routes/MovieDetail";
-import OldReact from "./routes/OldReact";
+import Redux from "./routes/Redux";
 
 function App() { 
   return (
@@ -16,7 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Movie />}></Route>
             <Route path="/movie/:id" element={<MovieDetail />}></Route>
-            <Route path="/old-react" element={<OldReact />}></Route>
+            <Route path="/redux" element={<Redux />}></Route>
           </Routes>
         </BrowserRouter>
       </div>
