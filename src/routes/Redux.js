@@ -1,38 +1,50 @@
 import { useState } from "react";
 import {createStore} from 'redux';
-import {composeWithDevTools} from 'redux-devtools-extension';
 
 function Redux() {
-    const ADD = 'ADD';
-    const MINUS = 'MINUS';
-    const [counter,setCounter] = useState(0);
-    const modifyCounter = (state = counter, action) => {
+    const ADD_TODO = 'ADD_TODO';
+    const DELETE_TODO = 'DELETE_TODO';
+
+    const reducer = (state = [] ,action) => {
         switch(action.type) {
-            case ADD :
-            return state + 1;
+            case ADD_TODO : 
+                return state = [value];
+
+            case DELETE_TODO : 
+                return state = [];
             
-            case MINUS :
-            return state - 1;
-
             default :
-            return state;
+                return state;
         }
-    };
-    const counterStore = createStore(modifyCounter,composeWithDevTools());
-
-    const AddClick = () => {
-        counterStore.dispatch({type:ADD});
     }
-    const MinusClick = () => {
-        counterStore.dispatch({type:MINUS})
-    };
-    counterStore.subscribe(() => setCounter(counterStore.getState()) );
-    
+    const store = createStore(reducer);
+
+    const [todo,setTodo] = useState([]);
+    const [value,setValue] = useState('');
+
+    const createTodo = t => {
+        setTodo([t, ...todo]);
+    }
+    const onSubmit = e => {
+        e.preventDefault();
+        // createTodo(value);
+        store.dispatch({type : ADD_TODO, text : value});
+        setValue('');
+    }
+    const onChange = e => {
+        setValue(e.target.value);
+    }
     return (
         <>
-            <button onClick={AddClick}>ADD</button>
-            <button onClick={MinusClick}>MINUS</button>
-            <p>{counter}</p>
+            <form onSubmit={onSubmit}>
+                <input type="text" value={value} onChange={onChange} placeholder="todo"/>
+                <button>add</button>
+            </form>
+            <ul>
+                {todo.map((i,idx)=>{
+                    return <li key={idx}>{i}</li>
+                })}
+            </ul>
         </>
     )
 }
