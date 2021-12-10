@@ -18,14 +18,16 @@ const deleteToDo = id => {
     }
 }
 
-const reducer = (state = [] ,action) => {
+const reducer = (state = [] , action) => {
     switch (action.type) {
         case ADD_TODO:
-            return [{id : action.id, text : action.text},...state]
+            return [{id : action.id, text : action.text},...state];
         
         case DELETE_TODO:
-            return state.filter(id => id !== action.id);
-        
+            return state.filter(todo => todo.id !== action.id);
+
+        default:
+            break;
     }
 }
 const store = createStore(reducer);

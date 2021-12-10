@@ -1,10 +1,14 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { actionCreater } from '../components/Store';
+import { Link } from "react-router-dom"
 
 function ToDOList({id,text,deleteToDo}) {
     return (
-        <li>{text}<button onClick={deleteToDo}>DEL</button></li>
+        <li>
+            <Link to={`/${id}`}>{text}</Link>
+            <button onClick={deleteToDo}>DEL</button>
+        </li>
     )
 }
 
@@ -15,7 +19,9 @@ ToDOList.propTypes = {
 
 const mapDispacthToProps = (dispacth, props) => {
     return {
-        deleteToDo : props => dispacth(actionCreater.deleteToDo(parseInt(props.id)))
+        deleteToDo : () => {
+            dispacth(actionCreater.deleteToDo(parseInt(props.id)));
+        }
     };
 }
 

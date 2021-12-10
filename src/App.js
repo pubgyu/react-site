@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Movie from "./routes/Movie";
 import MovieDetail from "./routes/MovieDetail";
 import Redux from "./routes/Redux";
+import Detail from "./routes/Detail";
 
 function App() { 
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/" element={<Movie />}></Route>
             <Route path="/movie/:id" element={<MovieDetail />}></Route>
             <Route path="/redux" element={<Redux />}></Route>
+            <Route path="/detail" element={<Detail />}></Route>
           </Routes>
         </BrowserRouter>
       </div>
